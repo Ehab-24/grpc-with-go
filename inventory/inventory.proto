@@ -1,0 +1,58 @@
+
+syntax = "proto3";
+option go_package = "suraj.com/rpc/inventory";
+
+package inventory;
+
+service Inventory {
+
+    rpc GetProduct (ID) returns (Product) {}
+    rpc GetProducts (ProductsQuery) returns (ProductsResponse) {}
+
+    rpc AddProduct (Product) returns (AddProductResponse) {}
+
+    rpc DeleteProduct (ID) returns (DeleteProductResponse) {}
+}
+
+/****************************************************
+ ******************** Base Types ********************
+***************************************************/
+
+message ID {
+    int32 val = 1;
+}
+
+message Product {
+    int32 id = 1;
+    string name = 2;
+    int32 quantity = 3;
+    string description = 4;
+    int32 price = 5;
+}
+
+
+/****************************************************
+ ******************** Responses ********************
+***************************************************/
+message ProductsResponse {
+    repeated Product products = 1;
+}
+
+message AddProductResponse {
+    ID insertedId = 1;
+    bool acknowledged = 2;
+}
+
+message DeleteProductResponse {
+    int32 deleteCount = 1;
+}
+
+
+/****************************************************
+ ******************** Queries ********************
+***************************************************/
+message ProductsQuery {
+    string name = 1;
+    int32 quantity = 2;
+    int32 price = 3;
+}
