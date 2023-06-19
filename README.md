@@ -2,15 +2,15 @@
 A simple grpc implementation in golang
 
 ## Prerequisites
+ - You must have any of the [three latest releases](https://go.dev/doc/devel/release) of Go.
  - You must have the [proto compiler](https://grpc.io/docs/protoc-installation/) installed.
- - You must have any pf the [three latest releases](https://go.dev/doc/devel/release) of Go.
 
 ## Running Locally
 1. Clone the project:
 ```
-git clone 
+git clone https://github.com/Ehab-24/grpc-with-go.git
 ```
-2. Install go packages:
+2. Optionally run:
 ```
 go mod tidy
 ```
@@ -37,7 +37,7 @@ If you wish to change the `inventory.proto` file, you must regenerate `inventory
 export PATH="$PATH:$(go env GOPATH)/bin"
 ```
 2. Make and save changes to the `.proto` file.
-3. Regenerate `.pb.go` files. While still in `rpc/`, run:
+3. Regenerate `.pb.go` files. While still in `grpc-with-go/`, run:
 ```
 protoc --go_out=. --go_opt=paths=source_relative \
     --go-grpc_out=. --go-grpc_opt=paths=source_relative \
